@@ -133,47 +133,9 @@ void StateMachine(int state)
 
   switch (state_id)
   {
-    // Case 1 to 20
-    case 1 ... 20:
-
-      // Trigger Push
-      // -------------------------
-      servo.write(180);
-      delay(15);
-
-      // Break Case-statement
-      if(digitalRead(pin_switch_A) == LOW)
-      {
-        servo.write(1);
-        delay(15);
-        break;
-      }
-
-    // Case 21 to 30
-    case 21 ... 30:
-
-      // Pre-Trigger Push
-      // -------------------------
-      servo_position = 140;
-      servo_time = 250;
-      ServoControl_Speed(servo_position, servo_time, pin_pot, servo);
-      //delay(50);
-
-      // Trigger Push
-      // -------------------------
-      servo.write(180);
-      delay(15);
-
-      // Break Case-statement
-      if(digitalRead(pin_switch_A) == LOW)
-      {
-        servo.write(1);
-        delay(15);
-        break;
-      }
-
-    // Case 31
-    case 31:
+    
+    // Case 1
+    case 1:
 
       // Pre-Trigger Push
       // -------------------------
@@ -195,8 +157,8 @@ void StateMachine(int state)
         break;
       }
 
-    // Case 32
-    case 32:
+    // Case 2
+    case 2:
 
       // Pre-Trigger Push
       // -------------------------
@@ -223,8 +185,8 @@ void StateMachine(int state)
         break;
       }
 
-    // Case 33
-    case 33:
+    // Case 3
+    case 3:
 
       // Pre-Trigger Push
       // -------------------------
@@ -261,8 +223,8 @@ void StateMachine(int state)
         break;
       }
 
-    // Case 34
-    case 34:
+    // Case 4
+    case 4:
 
       // Pre-Trigger Push
       // -------------------------
@@ -270,6 +232,67 @@ void StateMachine(int state)
       servo_time = 500;
       ServoControl_Speed(servo_position, servo_time, pin_pot, servo);
       delay(50);
+
+      // Trigger Push
+      // -------------------------
+      servo.write(180);
+      delay(15);
+
+      // Break Case-statement
+      if(digitalRead(pin_switch_A) == LOW)
+      {
+        servo.write(1);
+        delay(15);
+        break;
+      }
+    
+    // Case 5
+    case 5:
+    
+      delay(4000);
+
+      // Trigger Push
+      // -------------------------
+      servo.write(180);
+      delay(15);
+
+      // Break Case-statement
+      if(digitalRead(pin_switch_A) == LOW)
+      {
+        servo.write(1);
+        delay(15);
+        break;
+      }
+
+    // Case 6 to 14
+    case 6 ... 14:
+
+      delay(500);
+
+      // Trigger Push
+      // -------------------------
+      servo.write(180);
+      delay(15);
+
+      // Break Case-statement
+      if(digitalRead(pin_switch_A) == LOW)
+      {
+        servo.write(1);
+        delay(15);
+        break;
+      }
+
+    // Case 15 to 30
+    case 15 ... 20:
+
+      delay(500);
+
+      // Pre-Trigger Push
+      // -------------------------
+      servo_position = 140;
+      servo_time = 250;
+      ServoControl_Speed(servo_position, servo_time, pin_pot, servo);
+      //delay(50);
 
       // Trigger Push
       // -------------------------
@@ -305,7 +328,8 @@ void loop()
   if(digitalRead(pin_switch_A) == HIGH)
   {
     int state_min = 1;
-    int state_max = 34 + 1;
+    int state_max = 20 + 1;
+    
     StateMachine(random(state_min, state_max));
 
   }
